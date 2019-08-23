@@ -1,14 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { User } from '../components/User'
+import { User as  UserComponent } from '../components/User'
 
-class UserContainer extends React.Component {
+class User extends React.Component {
   render() {
     const { user } = this.props;
     return (
-      <User
-        name={user.name}
-      />
+      <UserComponent name={user.name} />
     )
   }
 }
@@ -21,4 +19,4 @@ const mapStateToProps = store => {
 
 export default connect(
   mapStateToProps
-)(UserContainer)
+)(User)

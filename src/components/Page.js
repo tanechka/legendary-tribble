@@ -4,28 +4,15 @@ import PropTypes from 'prop-types'
 export class Page extends React.Component {
   onBtnClick = e => {
     e.preventDefault();
-    const year = +e.currentTarget.innerText;
-    this.props.getPhotos(year);
+    this.props.getPhotos();
   };
-  renderButtons = () => {
-    const years = [2018, 2017, 2016, 2015, 2014];
-
-    return years.map((item, index) => {
-      return (
-        <button key={index} className="btn" onClick={this.onBtnClick}>
-          {item}
-        </button>
-      )
-    })
-  };
-
   render() {
-    const {year, photos, isFetching} = this.props;
+    const {photos, isFetching} = this.props;
     return (
       <div>
-        <p>{this.renderButtons()}</p>
+        <button className="btn" onClick={this.onBtnClick}>кнопка</button>
         <h3>
-          У тебя {photos.length} фото за {year} год
+          У тебя {photos.length}
           {isFetching ? <p>Загрузка...</p> : <p>У тебя {photos.length} фото.</p>}
         </h3>
       </div>
@@ -34,7 +21,6 @@ export class Page extends React.Component {
 }
 
 Page.propTypes = {
-  year: PropTypes.number.isRequired,
   photos: PropTypes.array.isRequired,
   getPhotos: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
